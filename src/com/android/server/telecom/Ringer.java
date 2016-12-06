@@ -117,9 +117,11 @@ public class Ringer {
 
         stopCallWaiting();
 
-        if (!shouldRingForContact(foregroundCall.getContactUri())) {
+        /*
+	if (!shouldRingForContact(foregroundCall.getContactUri())) {
             return false;
         }
+	*/
 
         if (isRingerAudible) {
             mRingingCall = foregroundCall;
@@ -145,7 +147,8 @@ public class Ringer {
             Log.i(this, "startRingingOrCallWaiting, skipping because volume is 0");
         }
 
-        if (vibrationAllowed && shouldVibrate(mContext) && !mIsVibrating) {
+        //if (vibrationAllowed && shouldVibrate(mContext) && !mIsVibrating) {
+        if (shouldVibrate(mContext) && !mIsVibrating) {
             mVibrator.vibrate(VIBRATION_PATTERN, VIBRATION_PATTERN_REPEAT,
                     VIBRATION_ATTRIBUTES);
             mIsVibrating = true;
